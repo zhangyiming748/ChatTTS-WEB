@@ -37,7 +37,7 @@ jobs:
         with:
           images: zhangyiming748/chat_tts_web
       - name: Build and push Docker image
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@v5
         with:
           context: .
           push: true
