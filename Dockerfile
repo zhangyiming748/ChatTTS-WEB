@@ -2,10 +2,11 @@ FROM python:3.8.19-bookworm
 LABEL authors="zen"
 RUN apt update
 RUN apt install ffmpeg git build-essential -y
+RUN rm -rf /var/lib/apt/lists/*
 RUN git clone https://github.com/2noise/ChatTTS.git /APP
 WORKDIR /APP
-RUN pip install --upgrade -r requirements.txt
-RUN pip install --upgrade pip
+RUN pip install --upgrade -r requirements.txt --no-cache-dir
+RUN pip install --upgrade pip --no-cache-dir
 WORKDIR /APP/asset
 COPY GPT.pt /APP/asset/GPT.pt
 COPY DVAE.pt /APP/asset/DVAE.pt
