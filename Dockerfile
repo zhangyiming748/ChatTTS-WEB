@@ -7,13 +7,13 @@ WORKDIR /APP
 RUN pip install --upgrade -r requirements.txt
 RUN pip install --upgrade pip
 WORKDIR /APP/asset
-RUN wget --no-check-certificate --tries=10 https://huggingface.co/2Noise/ChatTTS/resolve/main/asset/GPT.pt
-RUN wget --no-check-certificate --tries=10 https://huggingface.co/2Noise/ChatTTS/resolve/main/asset/DVAE.pt
-RUN wget --no-check-certificate --tries=10 https://huggingface.co/2Noise/ChatTTS/resolve/main/asset/DVAE_full.pt
-RUN wget --no-check-certificate --tries=10 https://huggingface.co/2Noise/ChatTTS/resolve/main/asset/Decoder.pt
-RUN wget --no-check-certificate --tries=10 https://huggingface.co/2Noise/ChatTTS/resolve/main/asset/Vocos.pt
-RUN wget --no-check-certificate --tries=10 https://huggingface.co/2Noise/ChatTTS/resolve/main/asset/spk_stat.pt
-RUN wget --no-check-certificate --tries=10 https://huggingface.co/2Noise/ChatTTS/resolve/main/asset/tokenizer.pt
+COPY GPT.pt /APP/asset/GPT.pt
+COPY DVAE.pt /APP/asset/DVAE.pt
+COPY DVAE_full.pt /APP/asset/DVAE_full.pt
+COPY Decoder.pt /APP/asset/Decoder.pt
+COPY Vocos.pt /APP/asset/Vocos.pt
+COPY spk_stat.pt /APP/asset/spk_stat.pt
+COPY tokenizer.pt /APP/asset/tokenizer.pt
 RUN ls -alh
 WORKDIR /APP/examples/web
 EXPOSE 8080
