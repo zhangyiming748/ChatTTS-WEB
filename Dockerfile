@@ -2,7 +2,7 @@ FROM python:3.8.19-bookworm
 LABEL authors="zen"
 RUN apt update
 RUN apt install ffmpeg git build-essential -y
-RUN git https://github.com/2noise/ChatTTS.git /APP
+RUN git clone https://github.com/2noise/ChatTTS.git /APP
 WORKDIR /APP
 RUN pip install --upgrade -r requirements.txt
 WORKDIR /APP/asset
