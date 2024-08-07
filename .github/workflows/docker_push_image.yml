@@ -10,20 +10,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-      - name: wget GPT.pt
-        run: wget --no-check-certificate --tries=10 https://huggingface.co/2Noise/ChatTTS/resolve/main/asset/GPT.pt
-      - name: wget DVAE.pt
-        run: wget --no-check-certificate --tries=10 https://huggingface.co/2Noise/ChatTTS/resolve/main/asset/DVAE.pt
-      - name: wget DVAE_full.pt
-        run: wget --no-check-certificate --tries=10 https://huggingface.co/2Noise/ChatTTS/resolve/main/asset/DVAE_full.pt
-      - name: wget Decoder
-        run: wget --no-check-certificate --tries=10 https://huggingface.co/2Noise/ChatTTS/resolve/main/asset/Decoder.pt
-      - name: wget Vocos.pt
-        run: wget --no-check-certificate --tries=10 https://huggingface.co/2Noise/ChatTTS/resolve/main/asset/Vocos.pt
-      - name: wget spk_stat
-        run: wget --no-check-certificate --tries=10 https://huggingface.co/2Noise/ChatTTS/resolve/main/asset/spk_stat.pt
-      - name: wget tokenizer
-        run: wget --no-check-certificate --tries=10 https://huggingface.co/2Noise/ChatTTS/resolve/main/asset/tokenizer.pt
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
       - name: Log in to Docker Hub
@@ -43,3 +29,6 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+          platforms: |
+            linux/amd64
+            linux/arm64
